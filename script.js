@@ -7,13 +7,25 @@ const passwordConfirmation = document.getElementById("password-confirmation");
 form.addEventListener("submit", (event) => {
     event.preventDefault();
 
-    checkInputUsername();
+    checkform();
+}) 
+
+
+email.addEventListener("blur", () => {
     checkInputEmail();
-    checkInputPassword();
-    checkInputPasswordConfirmation();
 })
 
+username.addEventListener("blur", () => {
+    checkInputUsername();
+})
 
+password.addEventListener("blur", () => {
+    checkInputPassword();
+})
+
+passwordConfirmation.addEventListener("blur", () => {
+    checkInputPasswordConfirmation();
+})
 function checkInputUsername() {
     const usernameValue = username.value;
 
@@ -67,6 +79,25 @@ function checkInputPasswordConfirmation(){
 
 
         
+    }
+
+
+    function checkform (){
+    checkInputUsername();
+    checkInputEmail();
+    checkInputPassword();
+    checkInputPasswordConfirmation();
+
+
+    const formItems = form.querySelectorAll(".form-content")
+
+    const isValid = [...formItems].every( (item) => {
+return item.className === "form-content"
+    });
+    if(isValid){
+        alert("CADASTRADO COM SUCESSO!")
+    }
+
     }
 
 
